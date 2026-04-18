@@ -49,6 +49,37 @@ public class Phrase {
         return null;
     }
 
+    public char getLettre(int indexMot, int indexLettre){
+        if(indexMot >= 0 && indexMot < nbMots){
+           Mot mots = getMot(indexMot);
+           if(indexLettre >= 0 && indexLettre < mots.getNbLettres()){
+               return mots.getLettre(indexLettre);
+           }
+        }
+            return (char)0;
+    }
+
+    public char getLettre(int indexLettre){
+        int compteur = 0;
+        for (int i = 0; i < nbMots; i++) {
+            Mot mots = getMot(i);
+            for (int j = 0; j < mots.getNbLettres(); j++) {
+                if(compteur == indexLettre){
+                    return mots.getLettre(j);
+                }
+                compteur++;
+            }
+            if (i < nbMots - 1){
+                if(compteur == indexLettre){
+                    return ' ';
+                }
+                compteur++;
+            }
+        }
+
+        return (char) 0;
+    }
+
     public void ajouter(String str) {
         ajouter(new Phrase(str));
     }
@@ -58,9 +89,22 @@ public class Phrase {
     }
 
     // AJOUTEZ VOTRE CODE CI-DESSOUS
+    public void ajouter(char c){
+        Mot mots = getMot(nbMots - 1);
+        mots.ajouter(c);
+    }
 
     public void ajouter(Mot mot) {
         // Codez-moi!
+        if(nbMots >= mots.length){
+            Mot[] motagrandit = new Mot[mots.length * 2];
+            for (int i = 0; i < mots.length; i++) {
+                motagrandit[i] = mots[i];
+            }
+            mots = motagrandit;
+        }
+        mots[nbMots] = mot;
+        nbMots++;
     }
 
     public void ajouter(Phrase autre) {

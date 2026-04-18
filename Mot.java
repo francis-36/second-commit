@@ -19,6 +19,10 @@ public class Mot {
         nbLettres = str.length();
     }
 
+    public int getNbLettres() {
+        return nbLettres;
+    }
+
     // AJOUTEZ VOTRE CODE CI-DESSOUS
     @Override
     public String toString() {

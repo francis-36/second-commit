@@ -16,7 +16,7 @@ public class Main {
         System.out.println(korchnoi);
         Phrase phrase1 = new Phrase("je mange une pomme");
         System.out.printf("%d %d\n",phrase1.getNbMots(), phrase1.getLongueur());
-      /*  System.out.printf("%c\n", phrase1.getLettre(-1));
+        System.out.printf("%c\n", phrase1.getLettre(-1));
         System.out.printf("%c\n", phrase1.getLettre(0));
         System.out.printf("%c\n", phrase1.getLettre(-1,-1));
         System.out.printf("%c\n", phrase1.getLettre(-1,1));
@@ -29,7 +29,7 @@ public class Main {
         phrase1.ajouter(new Mot("terrible"));
         System.out.println(phrase1);
         phrase1.ajouter(new Phrase("le terrible"));
-        System.out.println(phrase1);
+       /* System.out.println(phrase1);
         System.out.println(phrase1.inserer('c',-1,-1));
         System.out.println(phrase1.inserer('c',-1,0)); //devrait être faux
         System.out.println(phrase1.inserer('c',0,-1));
