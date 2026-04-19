@@ -109,10 +109,65 @@ public class Phrase {
 
     public void ajouter(Phrase autre) {
         // Codez-moi!
+        for (int i = 0; i < autre.nbMots; i++) {
+            ajouter(autre.getMot(i));
+        }
+    }
+
+    public boolean inserer(char c, int indexMot, int indexLettre){
+        if(indexMot < 0 || indexMot > nbMots){
+            return false;
+        }
+        Mot lemot = getMot(indexMot);
+        if (lemot == null){
+            return false;
+        }
+        if(indexLettre < 0 || indexLettre > lemot.getNbLettres()){
+            return false;
+        }
+        lemot.inserer(c , indexLettre);
+        return true;
+    }
+
+    public boolean inserer(Mot mot, int indexMot){
+        if(indexMot < 0 || indexMot > nbMots){
+            return false;
+        }
+        if(nbMots >= mots.length){
+            Mot[] motagrandit = new Mot[mots.length * 2];
+            for (int i = 0; i < mots.length; i++) {
+                motagrandit[i] = mots[i];
+            }
+            mots = motagrandit;
+        }
+        for (int i = nbMots - 1; i >= indexMot; i--) {
+            mots[i + 1] = mots[i];
+        }
+        mots[indexMot] = mot;
+        nbMots++;
+        return true;
     }
 
     public boolean inserer(Phrase autre, int indexMot) {
         // Codez-moi!
+        if(indexMot < 0 || indexMot > nbMots){
+            return false;
+        }
+        if(nbMots + autre.nbMots > mots.length){
+            Mot[] motagrandit = new Mot[mots.length * 2];
+            for (int i = 0; i < mots.length; i++) {
+                motagrandit[i] = mots[i];
+            }
+            mots = motagrandit;
+        }
+        for (int i = nbMots - 1; i >= indexMot; i--) {
+            mots[i + 1] = mots[i];
+        }
+        for (int i = 0; i < autre.nbMots; i++) {
+            mots[indexMot + i] = autre.getMot(i);
+        }
+
+        nbMots += autre.nbMots;
         return true;
     }
 }

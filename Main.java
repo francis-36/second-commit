@@ -1,4 +1,4 @@
-/* INSCRIVEZ VOTRE OU VOS NOMS ICI:
+/* INSCRIVEZ VOTRE OU VOS NOMS ICI: Francis
 
 NE MODIFIEZ PAS CE FICHIER (sauf pour mettre certaines sections en commentaire le temps de tester votre code) */
 
@@ -29,7 +29,7 @@ public class Main {
         phrase1.ajouter(new Mot("terrible"));
         System.out.println(phrase1);
         phrase1.ajouter(new Phrase("le terrible"));
-       /* System.out.println(phrase1);
+        System.out.println(phrase1);
         System.out.println(phrase1.inserer('c',-1,-1));
         System.out.println(phrase1.inserer('c',-1,0)); //devrait être faux
         System.out.println(phrase1.inserer('c',0,-1));
@@ -124,6 +124,6 @@ public class Main {
     private static void commencerTest(String description) {
         System.out.printf("\n=== Test #%d : %s ===\n", ++noTest, description);
 
-       */
+
     }
 }
