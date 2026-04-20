@@ -32,7 +32,7 @@ public class Mot {
         return nbLettres;
     }
     public char getLettre(int index) {
-        if(index < 0){
+        if(index < 0 || index >= nbLettres){
             return 0;
         }
         return lettres[index];
@@ -40,9 +40,9 @@ public class Mot {
     public void ajouter(char lettre){
         if(nbLettres == lettres.length){
             agrandir();
-            lettres[nbLettres] = lettre;
-            nbLettres++;
         }
+        lettres[nbLettres] = lettre;
+        nbLettres++;
     }
     private void agrandir(){
        int taillenouvelle = nbLettres * 2 + 1;
@@ -54,12 +54,12 @@ public class Mot {
     }
 
     public boolean inserer(char lettre, int index){
-        if(nbLettres == lettres.length) {
+        if(nbLettres + 1 >= lettres.length) {
             agrandir();
         }
-        if(index >= 0 && index <= lettres.length){
-            for (int i = nbLettres; i > index ; i--) {
-                lettres[i] = lettres[i - 1];
+        if(index >= 0 && index <= nbLettres){
+            for (int i = nbLettres; i >= index ; i--) {
+                lettres[i + 1] = lettres[i];
             }
             lettres[index] = lettre;
             nbLettres++;

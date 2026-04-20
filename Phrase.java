@@ -90,8 +90,16 @@ public class Phrase {
 
     // AJOUTEZ VOTRE CODE CI-DESSOUS
     public void ajouter(char c){
-        Mot mots = getMot(nbMots - 1);
-        mots.ajouter(c);
+        if(c == ' '){
+            ajouter(new Mot());
+        }else {
+             Mot mots = getMot(nbMots - 1);
+             if(mots == null){
+                 mots = new Mot();
+                 ajouter(mots);
+             }
+             mots.ajouter(c);
+        }
     }
 
     public void ajouter(Mot mot) {
@@ -161,7 +169,7 @@ public class Phrase {
             mots = motagrandit;
         }
         for (int i = nbMots - 1; i >= indexMot; i--) {
-            mots[i + 1] = mots[i];
+            mots[i + autre.nbMots] = mots[i];
         }
         for (int i = 0; i < autre.nbMots; i++) {
             mots[indexMot + i] = autre.getMot(i);
